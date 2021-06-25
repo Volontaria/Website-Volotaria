@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import {DefaultLayoutComponent} from "./layouts/default-layout/default-layout.component";
+import {AdminLayoutComponent} from "./layouts/admin-layout/admin-layout.component";
 import {ProfileComponent} from "./pages/profile/profile.component";
 import {ScheduleComponent} from "./pages/schedule/schedule.component";
 import {EventsComponent} from "./pages/events/events.component";
@@ -11,6 +12,8 @@ import {RegisterConfirmComponent} from "./pages/register-confirm/register-confir
 import {CkEditorPageComponent} from "./pages/ck-editor-page/ck-editor-page.component";
 import {MobileComponent} from "./pages/mobile/mobile.component";
 import {LogoutComponent} from "./pages/logout/logout.component";
+import {DashboardAdminComponent} from "./pages/dashboard-admin/dashboard-admin.component";
+
 
 const routes: Routes = [
   {
@@ -74,6 +77,80 @@ const routes: Routes = [
         ]
       },
     ]
+  },
+  {
+    path: 'admin',
+    component: AdminLayoutComponent,
+    children: [
+      // {
+      //   path: 'email-addresses',
+      //   component: EmailAddresses,
+      // },
+      // {
+      //   path: 'applications',
+      //   component: ApplicationsComponent,
+      // },
+      // {
+      //   path: 'positions',
+      //   component: PositionsComponent,
+      // },
+      // {
+      //   path: 'participations',
+      //   component: ParticipationsComponent,
+      // },
+      // {
+      //   path: 'tasks',
+      //   component: TasksComponent,
+      // },
+      {
+        path: 'mobile',
+        component: MobileComponent,
+      },
+      {
+        path: 'page/:key',
+        component: CkEditorPageComponent,
+      },
+      {
+        path: 'cells',
+        component: CellsComponent,
+        canActivate: [
+          CanActivateViaAuthGuard
+        ]
+      },
+      {
+        path: 'events/:cellId',
+        component: EventsComponent,
+        canActivate: [
+          CanActivateViaAuthGuard
+        ]
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        canActivate: [
+          CanActivateViaAuthGuard
+        ]
+      },
+      {
+        path: 'schedule',
+        component: ScheduleComponent,
+        canActivate: [
+          CanActivateViaAuthGuard
+        ]
+      },
+      {
+        path: '',
+        redirectTo: '/cells',
+        pathMatch: 'full',
+        canActivate: [
+          CanActivateViaAuthGuard
+        ]
+      },
+    ]
+  },
+  {
+    path: 'dashboard-admin',
+    component: DashboardAdminComponent,
   },
 ];
 
