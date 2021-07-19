@@ -47,6 +47,11 @@ import { MobileComponent } from './pages/mobile/mobile.component';
 import { PromotionMobileComponent } from './components/promotion-mobile/promotion-mobile.component';
 import {QRCodeModule} from "angular2-qrcode";
 import { LogoutComponent } from './pages/logout/logout.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { LeftNavComponent } from './components/left-nav/left-nav.component';
+import { MatSidenavModule} from '@angular/material/sidenav';
+import { AdminEventsComponent } from './pages/admin-events/admin-events.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +82,10 @@ import { LogoutComponent } from './pages/logout/logout.component';
     MobileComponent,
     PromotionMobileComponent,
     LogoutComponent,
+    AdminLayoutComponent,
+    AdminDashboardComponent,
+    LeftNavComponent,
+    AdminEventsComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,6 +103,7 @@ import { LogoutComponent } from './pages/logout/logout.component';
     CKEditorModule,
     MatButtonModule,
     QRCodeModule,
+    MatSidenavModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
